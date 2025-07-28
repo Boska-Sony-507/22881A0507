@@ -1,26 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js or wherever needed
+import React, { useEffect } from 'react';
+import api from './axiosLogger';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    api.get('/users')
+      .then(res => console.log('Users:', res.data))
+      .catch(err => console.error('API error:', err));
+  }, []);
+
+  return <div>Hello from Frontend Logging Middleware!</div>;
 }
 
 export default App;
-
